@@ -69,7 +69,8 @@ CREATE TABLE tweet (
     "time" timestamp without time zone,
     is_quote_status boolean,
     retweet_count integer,
-    favourite_count integer
+    favourite_count integer,
+    text text
 );
 
 
@@ -95,16 +96,16 @@ COPY hashtag (value, total_count) FROM stdin;
 -- Data for Name: tweet; Type: TABLE DATA; Schema: public; Owner: dbsproject
 --
 
-COPY tweet (id, handle, is_retweet, "time", is_quote_status, retweet_count, favourite_count) FROM stdin;
+COPY tweet (id, handle, is_retweet, "time", is_quote_status, retweet_count, favourite_count, text) FROM stdin;
 \.
 
 
 --
--- Name: hashtag hashtag_pkey; Type: CONSTRAINT; Schema: public; Owner: dbsproject
+-- Name: hashtag hastag_pkey; Type: CONSTRAINT; Schema: public; Owner: dbsproject
 --
 
 ALTER TABLE ONLY hashtag
-    ADD CONSTRAINT hashtag_pkey PRIMARY KEY (value);
+    ADD CONSTRAINT hastag_pkey PRIMARY KEY (value);
 
 
 --

@@ -2,16 +2,13 @@ import csv
 import re
 from datetime import datetime
 
+#Speicher mit denen gearbeitet wird
 input_file = 'american-election-tweets.csv'
 output_file = 'aetDATA.csv'
 output_file_hashtags = 'aetTAGS.csv'
 i = 0
 
-removables =['\n']
-def fix_data(tweet):
-    for remove in removables:
-        hashtag = hashtag.replace(remove, '')
-    return tweet
+#Hilfsfunktionen fuer die Verarbeitung der Daten
     
 def str2bool(string):
     return string == 'True'
@@ -62,10 +59,13 @@ for tweet in data:
         hashtags.add(h)
         
 with open(output_file_hashtags, "w") as output:
-    i = 0
     writer = csv.writer(output, delimiter=';')
-    writer.writerow(["ID","value"])
+    writer.writerow(["value","total_count"])
     for element in sorted(hashtags):
-        writer.writerow([str(i),element])
-        i = i + 1
+        i=0
+        for tweet in data:
+            for l in tweet['hashtags']:
+                if element==l:
+                    i = i + 1
+        writer.writerow([element,str(i)])
     
