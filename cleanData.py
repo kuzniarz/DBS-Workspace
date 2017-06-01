@@ -32,15 +32,15 @@ with open(input_file, "r", errors='ignore') as f:
     for row in reader:
         # Format the data and put everything in a nice-looking JSON format
         d = dict()
-        d['id'] = i
-        d['handle'] = row[0]
-        d['text'] = removeEmoji(row[1])
-        d['hashtags'] = upperfind_hashtags(row[1])
-        d['is_retweet'] = str2bool(row[2])
-        d['time'] = time2stamp(row[4])
-        d['is_quote_status'] = str2bool(row[6])
-        d['retweet_count'] = int(row[7])
-        d['favorite_count'] = int(row[8])
+        d['1_id'] = i
+        d['2_handle'] = row[0]
+        d['3_is_retweet'] = str2bool(row[2])
+        d['4_time'] = time2stamp(row[4])
+        d['5_is_quote_status'] = str2bool(row[6])
+        d['6_retweet_count'] = int(row[7])
+        d['7_favorite_count'] = int(row[8])
+        d['8_text'] = removeEmoji(row[1])
+        d['9_hashtags'] = upperfind_hashtags(row[1])
         i = i + 1
         data.append(d)
 
