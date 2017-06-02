@@ -8,11 +8,9 @@ conn = psycopg2.connect(conn_string)
 cursor = conn.cursor()
 
 #Read Tweet Data and copy to database
-inputT= open(r'/home/kuzniarz/Desktop/Workspace/Datenbanken/Projekt/DBS-Workspace/aetDATA.csv', 'r')
-cursor.copy_from(inputT, "tweet", sep=';')
-inputT.close()
+cursor.execute('''COPY tweet FROM '/home/kuzniarz/Desktop/Workspace/Datenbanken/Projekt/DBS-Workspace/aetDATA.csv' WITH DELIMITER ';' CSV HEADER''')
 
 #Read Hashtag Data and copy to database
-inputH= open(r'/home/kuzniarz/Desktop/Workspace/Datenbanken/Projekt/DBS-Workspace/aetTAG.csv', 'r')
-cursor.copy_from(inputH, "hashtag", sep=';')
-inputH.close()
+cursor.execute('''COPY hashtag FROM '/home/kuzniarz/Desktop/Workspace/Datenbanken/Projekt/DBS-Workspace/aetTAGS.csv' WITH DELIMITER ';' CSV HEADER''')
+
+conn.commit();
